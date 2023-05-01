@@ -8,8 +8,8 @@ const AugustoCanvas = () => {
   return (
     <Canvas>
       <OrbitControls />
-      <ambientLight />
-      <PerspectiveCamera position={[2, 2, 2]} makeDefault />
+      {/* <ambientLight /> */}
+      {/* <PerspectiveCamera position={[2, 2, 2]} makeDefault /> */}
       <Suspense fallback={<CanvasLoader />}>
         <Augusto />
       </Suspense>

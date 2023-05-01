@@ -1,24 +1,21 @@
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import React, { useRef } from "react";
-import { DoubleSide } from 'three'
+import { WaveMaterial } from '../shaders/WaveMaterial'
 
 const Augusto = () => {
-  const planeRef = useRef();
+  const ref = useRef();
 
-  useFrame(({ clock }) => {
-    planeRef.current.rotation.x = clock.getElapsedTime();
-  });
+  useFrame((state, delta) => (ref.current.time += delta))
 
   return (
     <>
       <mesh
         position={[0, 0, 0]}
-        rotation={[-Math.PI / 2, 0, 0]}
-        scale={[1, 1, 1]}
-        ref={planeRef}
+        scale={[2, 2, 2]}
       >
-        <planeGeometry />
-        <meshBasicMaterial color="red" side={DoubleSide} />
+        <icosahedronGeometry args={[1,3]} />
+        <sphereGeometry args={[1, 32, 32]} />
+        <waveMaterial wireframe ref={ref} key={WaveMaterial.key} toneMapped={true} />
       </mesh>
     </>
   );
