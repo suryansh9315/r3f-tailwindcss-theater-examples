@@ -9,7 +9,7 @@ const PlaneCanvas = () => {
     <Canvas>
       <OrbitControls />
       <ambientLight />
-      <PerspectiveCamera position={[2, 2, 2]} makeDefault />
+      <PerspectiveCamera position={[0, 0, 4]} makeDefault />
       <Suspense fallback={<CanvasLoader />}>
         <Plane />
       </Suspense>
